@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "parcel-build": "parcel build index.html && cp _redirects ./dist/",
+    "serve": "parcel index.html"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -11,9 +14,11 @@
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-prettier": "^3.3.1",
+    "parcel-bundler": "^1.12.5",
     "prettier": "1.19.1"
   },
   "dependencies": {
+    "html-literal": "^1.1.0",
     "node": "^15.8.0",
     "yargs-parser": ">=13.1.2"
   }
