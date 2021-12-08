@@ -8,7 +8,7 @@ export default () => html`
       >"Call to Action Button"</a
     >
   </section>
-  <section id="shark">
+  <div id="shark">
     <img src="${sharkimage}" />
-  </section>
+  </div>
 `;

@@ -1,3 +1,7 @@
+body {
+  width: 100%;
+}
+
 #jumbotron {
   background: url(https://images.unsplash.com/photo-1528334713982-2d1fe11a157a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80)
     center center no-repeat;
@@ -22,13 +26,19 @@
   border-radius: 10px;
 }
 
-#shark > img {
-  max-height: 300px;
-  height: auto;
-  max-width: 300px;
-  width: auto;
+#shark {
+  text-align: center;
+  margin: 1rem;
 }
 
+#shark > img {
+  max-width: 500px;
+  min-width: 50px;
+  width: 100%;
+  max-height: 500px;
+  min-height: 50px;
+  height: auto;
+}
 
 header > h1 {
   margin: 1em;
@@ -65,7 +75,7 @@ footer {
 
 #bioFluff > p {
   margin: 1rem;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 }
 
 #gallery {
