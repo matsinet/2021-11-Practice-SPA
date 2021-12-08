@@ -22,16 +22,25 @@
   border-radius: 10px;
 }
 
+#shark > img {
+  max-height: 300px;
+  height: auto;
+  max-width: 300px;
+  width: auto;
+}
+
+
 header > h1 {
   margin: 1em;
 }
 
 form {
-  border: solid 1px black;
+  max-width: 80%;
+  border: solid 2px black;
   margin: 2em;
+  padding:  2em;
   display: flex;
   flex-direction: column;
-  margin: 2em;
 }
 
 form > * {
@@ -52,6 +61,11 @@ footer {
 
 #bio {
   margin: 1rem;
+}
+
+#bioFluff > p {
+  margin: 1rem;
+  font-size: 1.5rem;
 }
 
 #gallery {
@@ -75,16 +89,16 @@ footer {
 #homeButton {
   text-align: center;
   background-color: beige;
-  font-size: 1.5em;
-  padding: 0.5rem;
-  margin:  1.5em;
+  font-size: 1em;
+  padding: 0.3rem;
+  margin:  0.3em;
   border:  2px red solid;
   border-radius: 15px;
   max-width: 80px;
   width: auto;
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: 15px;
+  right: 15px;
 }
 
 #homeButton > a {

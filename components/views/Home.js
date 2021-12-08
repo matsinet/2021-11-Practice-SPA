@@ -1,4 +1,5 @@
 import html from "html-literal";
+import sharkimage from "../../assets/image/funshark.jpeg";
 
 export default () => html`
   <section id="jumbotron">
@@ -6,5 +7,8 @@ export default () => html`
     <a href="" onClick="alert('Hello! You clicked the Button!')"
       >"Call to Action Button"</a
     >
+  </section>
+  <section id="shark">
+    <img src="${sharkimage}" />
   </section>
 `;
