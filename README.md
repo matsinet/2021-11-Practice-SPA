@@ -1,4 +1,4 @@
-# SavvyCoders testsap -- Stattless Single Page Appliccation
+# SavvyCoders testsap -- Stateless Single Page Appliccation
 
 ## Overview
 
