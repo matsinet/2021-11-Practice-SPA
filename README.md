@@ -1,4 +1,4 @@
-# Savvy Coders Project Boilerplate Starter Kit
+# SavvyCoders testsap -- Stattless Single Page Appliccation
 
 ## Overview
 
