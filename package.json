@@ -19,6 +19,8 @@
   },
   "dependencies": {
     "html-literal": "^1.1.0",
+    "lodash": "^4.17.21",
+    "navigo": "^7.1.3",
     "node": "^15.8.0",
     "yargs-parser": ">=13.1.2"
   }
