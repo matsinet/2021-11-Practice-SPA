@@ -1,7 +1,7 @@
 import html from "html-literal";
 
-export default () => html`
+export default st => html`
   <header>
-    <h1>SavvyCoders Example SPA</h1>
+    <h1>SavvyCoders ${st.header}</h1>
   </header>
 `;
