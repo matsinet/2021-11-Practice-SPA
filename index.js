@@ -8,10 +8,10 @@ const router = new Navigo(window.location.origin);
 router
   .on({
     "/": () => render(state.Home),
-    ":page": params => {
+    ":page": (params) => {
       let page = capitalize(params.page);
       render(state[page]);
-    }
+    },
   })
   .resolve();
 
@@ -27,8 +27,8 @@ function render(st) {
 }
 
 function addEventListeners(st) {
-  document.querySelectorAll("nav a").forEach(navLink =>
-    navLink.addEventListener("click", event => {
+  document.querySelectorAll("nav a").forEach((navLink) =>
+    navLink.addEventListener("click", (event) => {
       event.preventDefault();
       render(state[event.target.title]);
     })
@@ -43,7 +43,7 @@ function addEventListeners(st) {
 
   // event listener for the the photo form
   if (st.view === "Register") {
-    document.querySelector("form").addEventListener("submit", event => {
+    document.querySelector("form").addEventListener("submit", (event) => {
       event.preventDefault();
       // convert HTML elements to Array
       let inputList = Array.from(event.target.elements);
