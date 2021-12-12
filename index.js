@@ -1,17 +1,16 @@
 import { Header, Nav, Main, Footer } from "./components";
 import * as state from "./store";
+//  Add Axios
 import Navigo from "navigo";
 import { capitalize } from "lodash";
 
 const router = new Navigo(window.location.origin);
 
+//  Move router to the end AND add Router.Hooks
 router
   .on({
     "/": () => render(state.Home),
-    ":page": (params) => {
-      let page = capitalize(params.page);
-      render(state[page]);
-    },
+    ":page": (params) => render(state[capitalize(params.page)]),
   })
   .resolve();
 
@@ -23,10 +22,13 @@ function render(st) {
     ${Footer()}
   `;
   router.updatePageLinks();
+
   addEventListeners(st);
 }
 
+//  FUNCTION FOR EVENT LISTENERS
 function addEventListeners(st) {
+  // add event listeners to Nav items for navigation
   document.querySelectorAll("nav a").forEach((navLink) =>
     navLink.addEventListener("click", (event) => {
       event.preventDefault();
@@ -60,3 +62,7 @@ function addEventListeners(st) {
     });
   }
 }
+
+//  ADD ROUTER HOOKS HERE ...
+
+//ADD ROUTER HERE ...
