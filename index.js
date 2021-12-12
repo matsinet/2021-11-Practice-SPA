@@ -23,7 +23,7 @@ function render(st) {
     ${Footer()}
   `;
   router.updatePageLinks();
-  addEventListeners();
+  addEventListeners(st);
 }
 
 function addEventListeners(st) {
