@@ -1,18 +1,20 @@
 import { Header, Nav, Main, Footer } from "./components";
 import * as state from "./store";
 //  Add Axios
+import axios from "axios";
+
 import Navigo from "navigo";
 import { capitalize } from "lodash";
 
 const router = new Navigo(window.location.origin);
 
 //  Move router to the end AND add Router.Hooks
-router
-  .on({
-    "/": () => render(state.Home),
-    ":page": (params) => render(state[capitalize(params.page)]),
-  })
-  .resolve();
+// router
+//   .on({
+//     "/": () => render(state.Home),
+//     ":page": (params) => render(state[capitalize(params.page)]),
+//   })
+//   .resolve();
 
 function render(st) {
   document.querySelector("#root").innerHTML = `
@@ -64,5 +66,59 @@ function addEventListeners(st) {
 }
 
 //  ADD ROUTER HOOKS HERE ...
+router.hooks({
+  before: (done, params) => {
+    const page =
+      params && params.hasOwnProperty("page")
+        ? capitalize(params.page)
+        : "Home";
+
+    if (page === "Blog") {
+      state.Blog.posts = [];
+      axios
+        .get("https://jsonplaceholder.typicode.com/posts")
+        .then((response) => {
+          response.data.forEach((post) => {
+            state.Blog.posts.push(post);
+            done();
+          });
+        });
+    }
+
+    if (page === "Home") {
+      axios
+        .get(
+          `https://api.openweathermap.org/data/2.5/weather?appid=fbb30b5d6cf8e164ed522e5082b49064&q=st.%20louis`
+        )
+        .then((response) => {
+          state.Home.weather = {};
+          state.Home.weather.city = response.data.name;
+          state.Home.weather.temp = response.data.main.temp;
+          state.Home.weather.feelsLike = response.data.main.feels_like;
+          state.Home.weather.description = response.data.weather[0].main;
+          done();
+        })
+        .catch((err) => console.log(err));
+    }
+
+    if (page === "Pizza") {
+      axios
+        .get(`${process.env.PIZZA_PLACE_API_URL}`)
+        .then((response) => {
+          state.Pizza.pizzas = response.data;
+          done();
+        })
+        .catch((error) => {
+          console.log("It puked", error);
+        });
+    }
+  },
+});
 
 //ADD ROUTER HERE ...
+router
+  .on({
+    "/": () => render(state.Home),
+    ":page": (params) => render(state[capitalize(params.page)]),
+  })
+  .resolve();

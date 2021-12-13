@@ -2,6 +2,11 @@ body {
   width: 100%;
 }
 
+#stlWeather{
+  margin: 1rem;
+  color: blue;
+}
+
 #jumbotron {
   background: url(https://images.unsplash.com/photo-1528334713982-2d1fe11a157a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80)
     center center no-repeat;
@@ -73,12 +78,18 @@ footer {
   margin: 1rem;
 }
 
+#bio > h2 {
+  font-size: xx-large;
+  border: 1px solid red;
+}
+
 #bioFluff > p {
   margin: 1rem;
   font-size: 1.3rem;
 }
 
 #gallery {
+  margin: 1rem;
   border: solid 1px black;
   clear: both;
 }
@@ -111,9 +122,35 @@ footer {
   right: 15px;
 }
 
+#homeButton:hover {
+  border:  3px blue solid;
+}
+
 #homeButton > a {
   text-decoration: none;
   color: red;
+}
+
+#pizzas {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.2em;
+  height: auto;
+  width: 92.5%;
+  margin: auto;
+}
+
+#pizzas tbody {
+  width: 100%;
+}
+
+#pizzas th {
+  text-align: left;
+  font-size: larger;
+  text-decoration-line: underline;
+}
+
+#pizzas td,th {
+  width: 25%;
 }
 
 @media (max-width: 549px) {
