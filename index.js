@@ -1,20 +1,16 @@
 import { Header, Nav, Main, Footer } from "./components";
 import * as state from "./store";
-//  Add Axios
 import axios from "axios";
 
 import Navigo from "navigo";
 import { capitalize } from "lodash";
 
+import dotenv from "dotenv";
+dotenv.config();
+
 const router = new Navigo(window.location.origin);
 
-//  Move router to the end AND add Router.Hooks
-// router
-//   .on({
-//     "/": () => render(state.Home),
-//     ":page": (params) => render(state[capitalize(params.page)]),
-//   })
-//   .resolve();
+//Move router to the end AND add Router.Hooks
 
 function render(st) {
   document.querySelector("#root").innerHTML = `
@@ -44,25 +40,6 @@ function addEventListeners(st) {
     .addEventListener("click", () =>
       document.querySelector("nav > ul").classList.toggle("hidden--mobile")
     );
-
-  // event listener for the the photo form
-  if (st.view === "Register") {
-    document.querySelector("form").addEventListener("submit", (event) => {
-      event.preventDefault();
-      // convert HTML elements to Array
-      let inputList = Array.from(event.target.elements);
-      // remove submit button from list
-      inputList.pop();
-      // construct new picture object
-      let newPic = inputList.reduce((pictureObject, input) => {
-        pictureObject[input.name] = input.value;
-        return pictureObject;
-      }, {});
-      // add new picture to state.Gallery.pictures
-      state.Gallery.pictures.push(newPic);
-      render(state.Gallery);
-    });
-  }
 }
 
 //  ADD ROUTER HOOKS HERE ...
@@ -73,22 +50,10 @@ router.hooks({
         ? capitalize(params.page)
         : "Home";
 
-    if (page === "Blog") {
-      state.Blog.posts = [];
-      axios
-        .get("https://jsonplaceholder.typicode.com/posts")
-        .then((response) => {
-          response.data.forEach((post) => {
-            state.Blog.posts.push(post);
-            done();
-          });
-        });
-    }
-
     if (page === "Home") {
       axios
         .get(
-          `https://api.openweathermap.org/data/2.5/weather?appid=fbb30b5d6cf8e164ed522e5082b49064&q=st.%20louis`
+          `https://api.openweathermap.org/data/2.5/weather?appid=${process.env.OPEN_WEATHER_MAP_API_KEY}&q=st.%20louis`
         )
         .then((response) => {
           state.Home.weather = {};
