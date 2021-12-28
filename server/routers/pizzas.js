@@ -43,9 +43,12 @@ router.put("/:id", (request, response) => {
         toppings: body.toppings
       }
     },
+    {
+      new: true
+    },
     (error, data) => {
       if (error) return response.sendStatus(500).json(error);
-      return response.json(request.body);
+      return response.json(data);
     }
   );
 });
