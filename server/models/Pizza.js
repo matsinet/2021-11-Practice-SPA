@@ -5,9 +5,15 @@ const pizzaSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  crust: String,
+  crust: {
+    type: String,
+    required: true
+  },
   cheese: String,
-  sauce: String,
+  sauce: {
+    type: String,
+    required: true
+  },
   toppings: [String]
 });
 
